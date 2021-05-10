@@ -74,7 +74,8 @@ public class TeileHibernate implements ITeilHibernate {
 			}
 			if (t.getBezeichnung() != null) {
 
-				criteria.where(builder.equal(root.get("bezeichnung"), t.getBezeichnung()));
+				criteria.where(builder.like( builder.upper(root.get("bezeichnung")), "%" + t.getBezeichnung().toUpperCase()+"%") );
+			
 			}
 			if (t.getMengeneinheit() != null) {
 
