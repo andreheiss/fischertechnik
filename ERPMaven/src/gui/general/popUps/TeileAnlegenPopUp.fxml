@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="800.0" style="-fx-background-color: #006DB2;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+	<center>
+		<AnchorPane prefHeight="700.0" prefWidth="800.0" style="-fx-background-color: WHITE;" BorderPane.alignment="CENTER">
+			<children>
+				<AnchorPane layoutX="29.0" prefHeight="700.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+					<children>
+						<TextField fx:id="teileBezeichnung" layoutX="15.0" layoutY="282.0" prefHeight="26.0" prefWidth="450.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="600.0" AnchorPane.topAnchor="64.0">
+                     <font>
+                        <Font name="Verdana" size="12.0" />
+                     </font></TextField>
+						<Label layoutX="17.0" layoutY="264.0" text="Bezeichnung" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="44.0">
+							<font>
+								<Font name="Verdana Bold" size="14.0" />
+							</font>
+						</Label>
+						<Label layoutX="27.0" layoutY="274.0" text="Farbe" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="104.0">
+							<font>
+								<Font name="Verdana Bold" size="14.0" />
+							</font>
+						</Label>
+						<Label layoutX="15.0" layoutY="376.0" text="Beschaffungsart" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="164.0">
+							<font>
+								<Font name="Verdana Bold" size="14.0" />
+							</font>
+						</Label>
+						<Label layoutX="15.0" layoutY="487.0" text="Mengeneinheit" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="224.0">
+							<font>
+								<Font name="Verdana Bold" size="14.0" />
+							</font>
+						</Label>
+						<Label layoutX="25.0" layoutY="497.0" text="Planungsart" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="284.0">
+							<font>
+								<Font name="Verdana Bold" size="14.0" />
+							</font>
+						</Label>
+						<Label layoutX="35.0" layoutY="507.0" text="Teileart" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="344.0">
+							<font>
+								<Font name="Verdana Bold" size="14.0" />
+							</font>
+						</Label>
+						<Label layoutX="223.0" layoutY="488.0" text="Gültig von" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="404.0">
+							<font>
+								<Font name="Verdana Bold" size="14.0" />
+							</font>
+						</Label>
+						<Label layoutX="223.0" layoutY="516.0" text="Gültig bis" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="464.0">
+							<font>
+								<Font name="Verdana Bold" size="14.0" />
+							</font>
+						</Label>
+						<DatePicker fx:id="teileGueltigVon" layoutX="9.0" layoutY="462.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="424.0" />
+						<DatePicker fx:id="teileGueltigBis" layoutX="10.0" layoutY="542.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="484.0" />
+						<ChoiceBox fx:id="farbe" layoutX="29.0" layoutY="262.0" prefWidth="150.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="124.0" />
+						<ChoiceBox fx:id="beschaffungsArt" layoutX="19.0" layoutY="252.0" prefWidth="150.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="184.0" />
+						<ChoiceBox fx:id="planungsArt" layoutX="15.0" layoutY="348.0" prefWidth="150.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="304.0" />
+						<ChoiceBox fx:id="teileArt" layoutX="15.0" layoutY="402.0" prefWidth="150.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="364.0" />
+						<ChoiceBox fx:id="mengenEinheit" layoutX="25.0" layoutY="358.0" prefWidth="150.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="244.0" />
+                  <Button fx:id="suchen" layoutX="641.0" layoutY="507.0" mnemonicParsing="false" onAction="#userSuchen" style="-fx-background-color: #006DB2;" text="Suchen" textFill="WHITE" AnchorPane.leftAnchor="450.0" AnchorPane.topAnchor="500.0">
+                     <font>
+                        <Font name="Verdana Bold" size="14.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../Icons/bestatigen.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="anlegen" mnemonicParsing="false" onAction="#userAnlegen" style="-fx-background-color: #006DB2;" text="Anlegen" textFill="WHITE" AnchorPane.leftAnchor="600.0" AnchorPane.topAnchor="500.0">
+                     <font>
+                        <Font name="Verdana Bold" size="14.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../Icons/hinzufugen.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="anlegenBestaetigen" mnemonicParsing="false" onAction="#userAnlegenBestaetigen" style="-fx-background-color: #006DB2;" text="Bestätigen" textFill="WHITE" AnchorPane.leftAnchor="450.0" AnchorPane.topAnchor="500.0">
+                     <font>
+                        <Font name="Verdana Bold" size="14.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../Icons/bestatigen.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="back" layoutX="643.0" layoutY="536.0" mnemonicParsing="false" onAction="#userBack" text="Zurück" AnchorPane.leftAnchor="650.0" AnchorPane.topAnchor="535.0">
+                     <graphic>
+                        <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../Icons/pfeil.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Verdana" size="12.0" />
+                     </font>
+                  </Button>
+					</children>
+				</AnchorPane>
+			</children>
+		</AnchorPane>
+	</center>
+   <top>
+						<Label fx:id="labelUeberschrift" style="-fx-background-color: #006DB2;" text="Teil suchen" textFill="WHITE" BorderPane.alignment="CENTER">
+							<font>
+								<Font name="Verdana Bold" size="64.0" />
+							</font>
+						</Label>
+   </top>
+</BorderPane>

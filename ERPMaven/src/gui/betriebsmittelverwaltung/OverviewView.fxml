@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="708.0" prefWidth="1261.0" style="-fx-background-color: #006DB2;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.betriebsmittelverwaltung.OverviewController">
+   <left>
+      <AnchorPane BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../Icons/Kess.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <Text fx:id="betriebszeit" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="169.15978622436523" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="27.0" AnchorPane.topAnchor="494.0">
+               <font>
+                  <Font name="Verdana Bold" size="24.0" />
+               </font>
+            </Text>
+            <AnchorPane layoutX="4.0" layoutY="643.0" prefHeight="50.0" prefWidth="200.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="640.0">
+               <children>
+                  <Button fx:id="play" mnemonicParsing="false" onAction="#userPlay" text="Play" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="119.0">
+                     <graphic>
+                        <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../Icons/play-button.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="pause" mnemonicParsing="false" onAction="#userPause" text="Pause" AnchorPane.leftAnchor="119.0" AnchorPane.rightAnchor="25.0">
+                     <graphic>
+                        <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../Icons/pause.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </left>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: WHITE;" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane layoutY="8.0" prefHeight="691.0" prefWidth="1057.0" AnchorPane.bottomAnchor="0.0">
+               <children>
+                  <AnchorPane prefHeight="50.0" prefWidth="1057.0" style="-fx-background-color: #006DB2;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="720.0">
+                     <children>
+                        <Label fx:id="labelTeileverwaltung" layoutX="419.0" layoutY="10.0" prefHeight="30.0" prefWidth="245.0" style="-fx-background-color: #006DB2;" text="Teileverwaltung" textFill="WHITE" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="446.0" AnchorPane.rightAnchor="356.0" AnchorPane.topAnchor="2.0">
+                           <font>
+                              <Font name="Verdana Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <ButtonBar layoutX="739.0" prefHeight="50.0" prefWidth="319.0" style="-fx-background-color: #006DB2;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="739.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <buttons>
+                              <AnchorPane prefHeight="25.0" prefWidth="110.0">
+                                 <children>
+                                    <Button fx:id="back" mnemonicParsing="false" onAction="#userBack" text="Zurück" AnchorPane.bottomAnchor="2.5" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="2.5">
+                                       <graphic>
+                                          <ImageView fitHeight="13.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../../../ERPMaven/Icons/pfeil.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                       <font>
+                                          <Font name="Verdana" size="12.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </AnchorPane>
+                          </buttons>
+                        </ButtonBar>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+            <Button fx:id="teil" contentDisplay="TOP" layoutX="181.0" layoutY="82.0" mnemonicParsing="false" onAction="#userTeil" style="-fx-background-color: #006DB2;" text="Teil" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="181.0" AnchorPane.topAnchor="82.0">
+               <font>
+                  <Font name="Verdana Bold" size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="162.0" fitWidth="162.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../Icons/fehlendes-stuck.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="stueckliste" contentDisplay="TOP" layoutX="181.0" layoutY="82.0" mnemonicParsing="false" onAction="#userStueckliste" style="-fx-background-color: #006DB2;" text="Stückliste" textFill="WHITE" AnchorPane.leftAnchor="681.0" AnchorPane.topAnchor="82.0">
+               <font>
+                  <Font name="Verdana Bold" size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="162.0" fitWidth="162.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../Icons/dateien.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

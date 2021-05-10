@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="708.0" prefWidth="1261.0" style="-fx-background-color: #006DB2;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.betriebsmittelverwaltung.betriebsmittel.Controller">
+	<left>
+		<AnchorPane prefHeight="708.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+			<children>
+				<AnchorPane prefHeight="200.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="0.0">
+					<children>
+						<ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+							<image>
+								<Image url="@../../../../../Icons/Kess.png" />
+							</image>
+						</ImageView>
+					</children>
+				</AnchorPane>
+            <AnchorPane prefHeight="50.0" prefWidth="200.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="640.0">
+               <children>
+                  <Button fx:id="play" mnemonicParsing="false" onAction="#userPlay" text="Play" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="115.0">
+                     <graphic>
+                        <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../Icons/play-button.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="pause" mnemonicParsing="false" onAction="#userPause" text="Pause" AnchorPane.leftAnchor="115.0" AnchorPane.rightAnchor="20.0">
+                     <graphic>
+                        <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../Icons/pause.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <Text fx:id="betriebszeit" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="169.15978622436523" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="494.0">
+               <font>
+                  <Font name="Verdana Bold" size="24.0" />
+               </font>
+            </Text>
+			</children>
+		</AnchorPane>
+	</left>
+	<center>
+		<AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: WHITE;" BorderPane.alignment="CENTER">
+			<children>
+				<AnchorPane layoutY="8.0" prefHeight="691.0" prefWidth="1057.0" AnchorPane.bottomAnchor="0.0">
+					<children>
+						<Label fx:id="labelUeberschrift" layoutX="5.0" layoutY="109.0" style="-fx-background-color: #006DB2;" text="Betriebsmittel suchen" textFill="WHITE" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="50.0">
+							<font>
+								<Font name="Verdana Bold" size="64.0" />
+							</font>
+						</Label>
+						<AnchorPane prefHeight="50.0" prefWidth="1057.0" style="-fx-background-color: #006DB2;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="720.0">
+							<children>
+								<Label fx:id="labelTeileverwaltung" layoutX="419.0" layoutY="10.0" prefHeight="24.0" prefWidth="282.0" style="-fx-background-color: #006DB2;" text="Betriebsmittelverwaltung" textFill="WHITE" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="419.0" AnchorPane.rightAnchor="356.0" AnchorPane.topAnchor="2.0">
+									<font>
+										<Font name="Verdana Bold" size="18.0" />
+									</font>
+								</Label>
+								<ButtonBar layoutX="739.0" prefHeight="50.0" prefWidth="319.0" style="-fx-background-color: #006DB2;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="739.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+									<buttons>
+										<AnchorPane prefHeight="25.0" prefWidth="110.0">
+											<children>
+												<Button fx:id="anlegenBack" mnemonicParsing="false" onAction="#userAnlegenBack" text="Zurück" AnchorPane.bottomAnchor="2.5" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="2.5">
+													<graphic>
+														<ImageView fitHeight="13.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+															<image>
+																<Image url="@../../../../../../ERPMaven/Icons/pfeil.png" />
+															</image>
+														</ImageView>
+													</graphic>
+													<font>
+														<Font name="Verdana" size="12.0" />
+													</font>
+												</Button>
+												<Button fx:id="back" mnemonicParsing="false" onAction="#userBack" text="Zurück" AnchorPane.bottomAnchor="2.5" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="2.5">
+													<graphic>
+														<ImageView fitHeight="13.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+															<image>
+																<Image url="@../../../../../../ERPMaven/Icons/pfeil.png" />
+															</image>
+														</ImageView>
+													</graphic>
+													<font>
+														<Font name="Verdana" size="12.0" />
+													</font>
+												</Button>
+											</children>
+										</AnchorPane>
+									</buttons>
+								</ButtonBar>
+							</children>
+						</AnchorPane>
+						<TextField fx:id="Betriebsmittelbezeichnung" layoutX="15.0" layoutY="282.0" prefHeight="26.0" prefWidth="450.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="600.0" AnchorPane.topAnchor="164.0" />
+						<Button fx:id="suchen" layoutX="13.0" layoutY="605.0" mnemonicParsing="false" onAction="#userSuchen" style="-fx-background-color: #006DB2;" text="Suchen" textFill="WHITE" AnchorPane.leftAnchor="700.0" AnchorPane.topAnchor="650.0">
+							<font>
+								<Font name="Verdana Bold" size="14.0" />
+							</font>
+							<graphic>
+								<ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+									<image>
+										<Image url="@../../../../../Icons/studie.png" />
+									</image>
+								</ImageView>
+							</graphic>
+						</Button>
+						<Label fx:id="LblBetriebsmittelbezeichnung" layoutX="17.0" layoutY="264.0" text="Bezeichnung" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="144.0">
+							<font>
+								<Font name="Verdana Bold" size="14.0" />
+							</font>
+						</Label>
+						<Label fx:id="LblBetriebsmittelart" layoutX="27.0" layoutY="274.0" text="Betriebsmittelart" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="204.0">
+							<font>
+								<Font name="Verdana Bold" size="14.0" />
+							</font>
+						</Label>
+						<Label fx:id="LblWerk" layoutX="15.0" layoutY="376.0" text="Werk" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="264.0">
+							<font>
+								<Font name="Verdana Bold" size="14.0" />
+							</font>
+						</Label>
+						<Label layoutX="16.0" layoutY="326.0" text="Gültig von" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="326.0">
+							<font>
+								<Font name="Verdana Bold" size="14.0" />
+							</font>
+						</Label>
+						<Label layoutX="19.0" layoutY="385.0" text="Gültig bis" AnchorPane.leftAnchor="19.0" AnchorPane.topAnchor="385.0">
+							<font>
+								<Font name="Verdana Bold" size="14.0" />
+							</font>
+						</Label>
+						<DatePicker fx:id="bmGueltigVon" editable="false" layoutX="15.0" layoutY="348.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="348.0" />
+						<DatePicker fx:id="bmGueltigBis" editable="false" layoutX="15.0" layoutY="413.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="413.0" />
+						<Button fx:id="abgrenzen" layoutX="23.0" layoutY="615.0" mnemonicParsing="false" onAction="#userAbgrenzen" style="-fx-background-color: #006DB2;" text="Abgrenzen" textFill="WHITE" AnchorPane.leftAnchor="850.0" AnchorPane.topAnchor="650.0">
+							<font>
+								<Font name="Verdana Bold" size="14.0" />
+							</font>
+							<graphic>
+								<ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+									<image>
+										<Image url="@../../../../../Icons/falsch.png" />
+									</image>
+								</ImageView>
+							</graphic>
+						</Button>
+						<Button fx:id="aendern" layoutX="33.0" layoutY="625.0" mnemonicParsing="false" onAction="#userAendern" style="-fx-background-color: #006DB2;" text="Ändern" textFill="WHITE" AnchorPane.leftAnchor="700.0" AnchorPane.topAnchor="650.0">
+							<font>
+								<Font name="Verdana Bold" size="14.0" />
+							</font>
+							<graphic>
+								<ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+									<image>
+										<Image url="@../../../../../Icons/refresh.png" />
+									</image>
+								</ImageView>
+							</graphic>
+						</Button>
+						<Button fx:id="anlegen" layoutX="43.0" layoutY="635.0" mnemonicParsing="false" onAction="#userAnlegen" style="-fx-background-color: #006DB2;" text="Anlegen" textFill="WHITE" AnchorPane.leftAnchor="850.0" AnchorPane.topAnchor="650.0">
+							<font>
+								<Font name="Verdana Bold" size="14.0" />
+							</font>
+							<graphic>
+								<ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+									<image>
+										<Image url="@../../../../../Icons/hinzufugen.png" />
+									</image>
+								</ImageView>
+							</graphic>
+						</Button>
+						<ChoiceBox fx:id="betriebsmittelart" layoutX="29.0" layoutY="262.0" prefWidth="150.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="224.0" />
+						<ChoiceBox fx:id="werk" layoutX="19.0" layoutY="252.0" prefWidth="150.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="284.0" />
+					</children>
+				</AnchorPane>
+				<Button fx:id="aendernBestaetigen" layoutX="23.0" layoutY="615.0" mnemonicParsing="false" onAction="#userAendernBestaetigen" style="-fx-background-color: #006DB2;" text="Bestätigen" textFill="WHITE" AnchorPane.leftAnchor="700.0" AnchorPane.topAnchor="650.0">
+					<font>
+						<Font name="Verdana Bold" size="14.0" />
+					</font>
+					<graphic>
+						<ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+							<image>
+								<Image url="@../../../../../Icons/bestatigen.png" />
+							</image>
+						</ImageView>
+					</graphic>
+				</Button>
+				<Button fx:id="abgrenzenBestaetigen" layoutX="710.0" layoutY="660.0" mnemonicParsing="false" onAction="#userAbgrenzenBestaetigen" style="-fx-background-color: #006DB2;" text="Bestätigen" textFill="WHITE" AnchorPane.leftAnchor="700.0" AnchorPane.topAnchor="650.0">
+					<font>
+						<Font name="Verdana Bold" size="14.0" />
+					</font>
+					<graphic>
+						<ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+							<image>
+								<Image url="@../../../../../Icons/bestatigen.png" />
+							</image>
+						</ImageView>
+					</graphic>
+				</Button>
+				<Button fx:id="anlegenBestaetigen" layoutX="720.0" layoutY="670.0" mnemonicParsing="false" onAction="#userAnlegenBestaetigen" style="-fx-background-color: #006DB2;" text="Bestätigen" textFill="WHITE" AnchorPane.leftAnchor="700.0" AnchorPane.topAnchor="650.0">
+					<font>
+						<Font name="Verdana Bold" size="14.0" />
+					</font>
+					<graphic>
+						<ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+							<image>
+								<Image url="@../../../../../Icons/bestatigen.png" />
+							</image>
+						</ImageView>
+					</graphic>
+				</Button>
+			</children>
+		</AnchorPane>
+	</center>
+</BorderPane>

@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping">
+        
+<hibernate-mapping>
+	<class name="domain.teileverwaltung.core.Teil" table="TEIL">
+	
+		<id name="teilenummer" column="TEILENUMMER">
+	    	<generator class="native" />
+	    </id>
+	    <property name="gueltigVon">
+			<column name="GUELTIGVON"/>
+		</property>
+		<property name="gueltigBis">
+			<column name="GUELTIGBIS"/>
+		</property>
+		<property name="bezeichnung">
+		    <column name="BEZEICHNUNG" length="100"/>
+		</property>
+		<property name="mengeneinheit" column="MENGENEINHEIT">
+			<type name="org.hibernate.type.EnumType">
+				<param name="enumClass">domain.shared.Mengeneinheit</param>
+			</type>
+		</property>
+		<property name="teileart" column="TEILEART">
+			<type name="org.hibernate.type.EnumType">
+				<param name="enumClass">domain.shared.Teileart</param>
+			</type>
+		</property>
+		<property name="planart" column="PLANART">
+			<type name="org.hibernate.type.EnumType">
+				<param name="enumClass">domain.shared.Planungsart</param>
+			</type>
+		</property>
+		<property name="farbe" column="FARBE">
+			<type name="org.hibernate.type.EnumType">
+				<param name="enumClass">domain.shared.Farbe</param>
+			</type>
+		</property>
+		
+		<joined-subclass name="domain.teileverwaltung.core.Eigenfertigungsteil" table="EIGENFERTIGUNGSTEIL">
+        	<key column="TEILENUMMER"/>
+        		
+       		<bag name="baukastenstueckliste" fetch="join" table="Struktur" cascade="all">
+        		<key>
+        			<column name="Zusammenbau" />
+        		
+        		</key>
+        		<composite-element class="domain.teileverwaltung.core.Stuecklistenelement">
+        			<many-to-one name="teil" column="komponente" class="domain.teileverwaltung.core.Teil"/>
+        			<property name="menge"/>
+        		</composite-element>	
+        	</bag>
+        
+    	</joined-subclass>
+	
+		<joined-subclass name="domain.teileverwaltung.core.Fremdbezugsteil" table="FREMDBEZUGSTEIL">
+        	<key column="TEILENUMMER"/>
+        	<!--
+        	<property name="lieferant" column="LIEFERANT" type="org.hibernate.type.ClassType"/>
+        	-->
+    	</joined-subclass>
+		
+	</class>
+	
+	<class name="domain.lagerverwaltung.core.Lagerplatz" table="Lagerplatz" >
+	
+		<id name="lagerplatznummer" column ="Lagerplatznummer">
+	    	<generator class="native" />
+	    </id>
+	    <property name="posX">
+			<column name="posX"/>
+		</property>
+		<property name="posY">
+			<column name="posY"/>
+		</property>
+		  <many-to-one name="teil" column="teilenummer" class="domain.lagerverwaltung.core.Lagerteil"/>
+	
+
+	</class>
+	<class name="domain.lagerverwaltung.core.Lagerteil" table="Teil" >
+	
+		<id name="teilenummer" column ="teilenummer" >
+	    	<generator class="native" />
+	    </id>
+
+	</class>
+	
+	<class name="domain.betriebsmittelverwaltung.core.Betriebsmittel" table="BETRIEBSMITTEL">
+		<id name="betriebsmittelnummer" column="BETRIEBSMITTELNUMMER">
+	    	<generator class="native" />
+	    </id>
+	    <property name="gueltigVon">
+			<column name="GUELTIGVON"/>
+		</property>
+		<property name="gueltigBis">
+			<column name="GUELTIGBIS"/>
+		</property>
+		<property name="bezeichnung">
+		    <column name="BEZEICHNUNG" length="50"/>
+		</property>
+		<property name="art" column="BETRIEBSMITTELART">
+			<type name="org.hibernate.type.EnumType">
+				<param name="enumClass">domain.shared.Betriebsmittelart</param>
+			</type>
+		</property>
+		<many-to-one name="werk" column="WERKSNUMMER" class="domain.betriebsmittelverwaltung.core.BMWerk" not-null="true"/>
+	</class>
+		
+		
+		<class name="domain.betriebsmittelverwaltung.core.BMWerk" table="WERK">
+	        <id name="werksnummer" column="WERKSNUMMER">
+	    	<generator class="native" />
+	    </id>
+	    
+	   <!--
+	   <property name="bezeichnung">
+		    <column name="BEZEICHNUNG"/>
+		</property>
+	    <property name="gueltigVon">
+			<column name="GUELTIGVON"/>
+		</property>
+		<property name="gueltigBis">
+			<column name="GUELTIGBIS"/>
+		</property>
+		
+		<many-to-one name="anschrift" column="ADRESSNUMMER" class="domain.betriebsverwaltung.core.Adresse" not-null="true"/>
+		-->
+   </class>
+	
+	<!--
+	< class name="domain.betriebsverwaltung.core.Adresse" table="ADRESSE">
+	        <id name="adressnummer" column="ADRESSNUMMER">
+	    	<generator class="native" />
+	    </id>
+	    <property name="gueltigVon">
+			<column name="GUELTIGVON"/>
+		</property>
+		<property name="gueltigBis">
+			<column name="GUELTIGBIS"/>
+		</property>
+		<property name="hausnummer">
+		    <column name="HAUSNUMMER"/>
+		</property>
+		<property name="ort">
+		    <column name="ORT" />
+		</property>
+		<property name="plz">
+		    <column name="PLZ"/>
+		</property>
+		<property name="strasse">
+		    <column name="STRASSE"/>
+		</property>
+		</class>
+	
+	
+	-->
+	
+	
+	<!-- 
+	<class entity-name="domain.bedarfsplanung.core.Teil" table="teil" >
+	
+		<id name="teilenummer" column="teilenummer">
+	    	<generator class="native" />
+	    </id>
+	    <property name="planart" column="Planungsart" type="org.hibernate.type.EnumType"/>
+			
+	    <bag name="lagerplaetze" >
+        		<key column="teilenummer" />
+        		<one-to-many class="domain.lagerverwaltung.core.Lagerplatz"/>
+        </bag>
+       <bag name="reservierungen" >
+        		<key column name="teilenummer" />
+        		<one-to-many class="domain.lagerverwaltung.core.Reservierung"/>
+        </bag>
+   
+	</class>
+-->	
+<class name="domain.kundenauftragsverwaltung.core.Kundenauftrag" table="KUNDENAUFTRAG">
+		<id name="kundenauftragsnummer" column="KUNDENAUFTRAGSNUMMER">
+	    	<generator class="native" />
+	    </id>
+	    <property name="lieferzeitpunkt">
+			<column name="LIEFERZEITPUNKT"/>
+		</property>
+		<property name="kundennummer">
+			<column name="KUNDENNUMMER"/>
+		</property>
+		<bag name="positionen" cascade="all">
+        	<key column="KUNDENAUFTRAGSNUMMER"/>
+        	<one-to-many class="domain.kundenauftragsverwaltung.core.Kundenauftragsposition"/>
+    	</bag>
+		<property name="status" column="STATUS">
+			<type name="org.hibernate.type.EnumType">
+				<param name="enumClass">domain.shared.Auftragstatus</param>
+			</type>
+		</property>
+	</class>
+	
+	<class name="domain.kundenauftragsverwaltung.core.Kundenauftragsposition" table="KUNDENAUFTRAGSPOSITION">
+		<id name="positionsnummer" column="KUNDENAUFTRAGSPOSITIONSNUMMER">
+	    	<generator class="native" />
+	    </id>
+		<property name="teilenummer">
+			<column name="TEILENUMMER"/>
+		</property>
+		<property name="menge">
+			<column name="MENGE"/>
+		</property>
+	</class>
+	
+	<class name="domain.geschaeftspartnerverwaltung.core.Geschaeftspartner" table="GESCHAEFTSPARTNER">
+		<id name="partnernummer" column="PARTNERNUMMER">
+	    	<generator class="native" />
+	    </id>
+	   	<many-to-one name="adresse" column="ADRESSNUMMER" class="domain.geschaeftspartnerverwaltung.core.Adresse"/>
+		
+		<joined-subclass name="domain.geschaeftspartnerverwaltung.core.Kunde" table="KUNDE">
+        	<key column="KUNDENNUMMER"/>
+       		<property name="name">
+				<column name="NAME"/>
+			</property>
+			<property name="vorname">
+				<column name="VORNAME"/>
+			</property>
+    	</joined-subclass>
+	
+		<joined-subclass name="domain.geschaeftspartnerverwaltung.core.Lieferant" table="LIEFERANT">
+        	<key column="LIEFERANTENNUMMER"/>
+        	<property name="firma">
+				<column name="FIRMA"/>
+			</property>
+    	</joined-subclass>
+	</class>
+	
+	<class name="domain.geschaeftspartnerverwaltung.core.Adresse" table="ADRESSE">
+		<id name="adressnummer" column="ADRESSNUMMER">
+	    	<generator class="native"/>
+	    </id>
+	    <property name="strasse">
+			<column name="STRASSE"/>
+		</property>
+		<property name="hausnummer">
+			<column name="HAUSNUMMER"/>
+		</property>
+		<property name="plz">
+			<column name="PLZ"/>
+		</property>
+		<property name="ort">
+			<column name="ORT"/>
+		</property>
+		<property name="gueltigBis">
+			<column name="GUELTIGBIS"/>
+		</property>
+		<property name="gueltigVon">
+			<column name="GUELTIGVON"/>
+		</property>
+	</class>
+
+	
+</hibernate-mapping>
