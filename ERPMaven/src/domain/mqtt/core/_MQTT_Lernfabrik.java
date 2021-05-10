@@ -7,11 +7,11 @@ import org.eclipse.paho.client.mqttv3.*;
 import com.google.gson.*;
 import com.google.inject.Inject;
 
-import domain.mqtt.required.ILagerNachricht;
+import domain.mqtt.required.IAdapterNachricht;
 
 public class _MQTT_Lernfabrik implements MqttCallback {
 
-	private ILagerNachricht iln;
+	private IAdapterNachricht iln;
 
 // MQTT Clients (1 for send, 2 for receive)
 	private MqttClient client;
@@ -75,7 +75,7 @@ public class _MQTT_Lernfabrik implements MqttCallback {
 	private final String link = "c/link";
 
 	@Inject
-	public _MQTT_Lernfabrik(ILagerNachricht iln) {
+	public _MQTT_Lernfabrik(IAdapterNachricht iln) {
 		this.iln = iln;
 
 	}

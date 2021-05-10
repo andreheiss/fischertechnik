@@ -6,7 +6,8 @@ import domain.lagerverwaltung.core.Lagerplatz;
 import domain.lagerverwaltung.core.Lagerteil;
 import domain.lagerverwaltung.provided.ILagerService;
 import domain.mqtt.core.WorkPiece;
-import domain.mqtt.required.ILagerNachricht;
+import domain.mqtt.core.WorkPieceHistoryEntry;
+import domain.mqtt.required.IAdapterNachricht;
 import domain.shared.Farbe;
 import domain.teileverwaltung.core.Fremdbezugsteil;
 import domain.teileverwaltung.core.Teil;
@@ -14,7 +15,7 @@ import domain.teileverwaltung.providedservices.ITeilService;
 
 import java.util.List;
 
-public class MqttLagerAdapter implements ILagerNachricht {
+public class MqttLagerAdapter implements IAdapterNachricht {
 
 	private ILagerService ils;
 	private ITeilService its;
@@ -90,6 +91,12 @@ public class MqttLagerAdapter implements ILagerNachricht {
 		}
 		List<Lagerplatz> lagerplatz = ils.getLagerplatz(l);
 		return lagerplatz.get(0);
+		
+	}
+
+	@Override
+	public void historieEintragInfo(WorkPieceHistoryEntry entry) {
+		// TODO Auto-generated method stub
 		
 	}
 	

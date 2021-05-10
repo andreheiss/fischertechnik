@@ -1,8 +1,9 @@
 package domain.mqtt.required;
 
 import domain.mqtt.core.WorkPiece;
+import domain.mqtt.core.WorkPieceHistoryEntry;
 
-public interface ILagerNachricht {
+public interface IAdapterNachricht {
 // OUT
 
 	public void einlagerInfo(WorkPiece workpiece, String lagerplatz);
@@ -10,5 +11,7 @@ public interface ILagerNachricht {
 	
 	public void auslagerInfo(String lagerplatz);
 // 	gibt zurück, wo ein Teil ausgelagert wurde
+	
+	public void historieEintragInfo(WorkPieceHistoryEntry entry);
 
 }
