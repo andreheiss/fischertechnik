@@ -230,7 +230,7 @@ public class Controller implements IObserver {
 				feedbackPopUp(suchErg.toString() + "\n" + "Erfolgreich geaendert zu" + "\n" + bm.toString());
 				loadFelder();
 			}
-		} catch (NullPointerException ef) {
+		} catch (InvalidBetriebsmittelException ef) {
 			feedbackPopUp(ef.getMessage());
 		}
 
@@ -261,7 +261,7 @@ public class Controller implements IObserver {
 		}else {
 			feedbackPopUp("Misserfolg!");
 		}
-		}catch(NullPointerException it) {
+		}catch(InvalidBetriebsmittelException it) {
 			feedbackPopUp(it.getMessage());
 		}
 		feedbackPopUp(suchErg.toString() + "\n" + "Erfolgreich abgegrenzt");
