@@ -4,9 +4,17 @@ import java.time.LocalDateTime;
 
 public class Bruttobedarf {
 	
+	private int bruttobedarfsnummer;
 	private Teil teil;
 	private int menge;
 	private Nettobedarf nettobedarf;
+	
+	public int getBruttobedarfsnummer() {
+		return bruttobedarfsnummer;
+	}
+	public void setBruttobedarfsnummer(int bruttobedarfsnummer) {
+		this.bruttobedarfsnummer = bruttobedarfsnummer;
+	}
 	
 	public Teil getTeil() {
 		return teil;
@@ -108,6 +116,7 @@ public class Bruttobedarf {
 
 		return max;
 	}
+	
 	
 	
 }

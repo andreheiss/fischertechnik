@@ -13,7 +13,7 @@ public class Betriebsmittel {
 	private LocalDate gueltigVon;
 	private LocalDate gueltigBis;
 	private Betriebsmittelart art;
-	private BMWerk werk;
+	private Integer werksnummer;
 
 	public int getBetriebsmittelnummer() {
 		return betriebsmittelnummer;
@@ -55,12 +55,12 @@ public class Betriebsmittel {
 		this.art = art;
 	}
 
-	public BMWerk getWerk() {
-		return werk;
+	public Integer getWerksnummer() {
+		return werksnummer;
 	}
 
-	public void setWerk(BMWerk werk) {
-		this.werk = werk;
+	public void setWerksnummer(Integer werksnummer) {
+		this.werksnummer = werksnummer;
 	}
 
 	void validateBetriebsmittel() throws InvalidBetriebsmittelException {
@@ -71,7 +71,7 @@ public class Betriebsmittel {
 		if (this.getArt() == null) {
 			throw new InvalidBetriebsmittelException("Betriebsmittelart fehlt!");
 		}
-		if (this.getWerk()  == null) {
+		if (this.getWerksnummer()  == 0) {
 			throw new InvalidBetriebsmittelException("Werk fehlt!");
 		}
 

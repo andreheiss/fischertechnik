@@ -71,9 +71,9 @@ public class BetriebsmittelHibernate implements IBetriebsmittelHibernate {
 				criteria.where(builder.equal(root.get("betriebsmittelart"), bm.getArt()));
 			}
 		}
-			if(bm.getWerk()!= null){
+			if(bm.getWerksnummer()!= null){
 				
-				criteria.where(builder.equal(root.get("werksnummer"), bm.getWerk()));
+				criteria.where(builder.equal(root.get("werksnummer"), bm.getWerksnummer()));
 			
 		}
 		

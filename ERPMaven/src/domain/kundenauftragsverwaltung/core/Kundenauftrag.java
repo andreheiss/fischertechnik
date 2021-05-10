@@ -4,7 +4,6 @@ package domain.kundenauftragsverwaltung.core;
 import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
-
 import domain.shared.Auftragstatus;
 
 public class Kundenauftrag {

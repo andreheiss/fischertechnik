@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 
-import domain.betriebsmittelverwaltung.core.BMWerk;
 import domain.betriebsmittelverwaltung.core.Betriebsmittel;
 import domain.shared.Betriebsmittelart;
 import domain.shared.Farbe;
@@ -45,7 +44,7 @@ public class BMV_MultiplePopUpController {
 	@FXML
 	private TableColumn<Betriebsmittel, String> bezeichnung;
 	@FXML
-	private TableColumn<Betriebsmittel, Number> werk; 
+	private TableColumn<Betriebsmittel, Integer> werk; 
 	@FXML
 	private TableColumn<Betriebsmittel, Betriebsmittelart> betriebsmittelart;
 
@@ -92,8 +91,8 @@ public class BMV_MultiplePopUpController {
 		// Spaltenbefuellung ueber Namensgleichheit
 		betriebsmittelnummer.setCellValueFactory(new PropertyValueFactory<Betriebsmittel, Integer>("betriebsmittelnummer"));
 		bezeichnung.setCellValueFactory(new PropertyValueFactory<Betriebsmittel, String>("bezeichnung"));
-	//	werk.setCellValueFactory(new PropertyValueFactory<BMWerk, Integer>("werksnummer")); //Betriebsmittel auf Werk geandert //Hans
-		werk.setCellValueFactory(cellData -> new ReadOnlyIntegerWrapper(cellData.getValue().getWerk().getWerksnummer()) );
+		werk.setCellValueFactory(new PropertyValueFactory<Betriebsmittel, Integer>("werksnummer")); 
+	//	werk.setCellValueFactory(cellData -> new ReadOnlyIntegerWrapper(cellData.getValue().getWerk().getWerksnummer()) );
 		
 		
 		

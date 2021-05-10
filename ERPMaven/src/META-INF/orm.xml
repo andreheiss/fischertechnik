@@ -75,23 +75,12 @@
 		<property name="posY">
 			<column name="posY"/>
 		</property>
-		<!--
-		  <many-to-one name="teil" column="teilenummer" class="domain.lagerverwaltung.core.Lagerteil"/>
-	    -->
-	    <property name="teilenummer">
+		<property name="teilenummer">
 			<column name="teilenummer"/>
 		</property>
 
 	</class>
-	<!--
-	<class name="domain.lagerverwaltung.core.Lagerteil" table="Teil" >
 	
-		<id name="teilenummer" column ="teilenummer" >
-	    	<generator class="native" />
-	    </id>
-
-	</class>
-	-->
 	<class name="domain.betriebsmittelverwaltung.core.Betriebsmittel" table="BETRIEBSMITTEL">
 		<id name="betriebsmittelnummer" column="BETRIEBSMITTELNUMMER">
 	    	<generator class="native" />
@@ -110,19 +99,23 @@
 				<param name="enumClass">domain.shared.Betriebsmittelart</param>
 			</type>
 		</property>
-		<many-to-one name="werk" column="WERKSNUMMER" class="domain.betriebsmittelverwaltung.core.BMWerk" not-null="true"/>
+		<property name="werksnummer">
+		    <column name="WERKSNUMMER" />
+		</property>
+		<!--<many-to-one name="werk" column="WERKSNUMMER" class="domain.betriebsmittelverwaltung.core.BMWerk" not-null="true"/>
+		-->	
 	</class>
 		
 		
-		<class name="domain.betriebsmittelverwaltung.core.BMWerk" table="WERK">
+		<class name="domain.betriebsverwaltung.core.Werk" table="WERK">
 	        <id name="werksnummer" column="WERKSNUMMER">
 	    	<generator class="native" />
 	    </id>
 	    
-	   <!--
 	   <property name="bezeichnung">
 		    <column name="BEZEICHNUNG"/>
 		</property>
+		<!--
 	    <property name="gueltigVon">
 			<column name="GUELTIGVON"/>
 		</property>
@@ -132,90 +125,10 @@
 		
 		<many-to-one name="anschrift" column="ADRESSNUMMER" class="domain.betriebsverwaltung.core.Adresse" not-null="true"/>
 		-->
+		
    </class>
-	
-	<!--
-	< class name="domain.betriebsverwaltung.core.Adresse" table="ADRESSE">
-	        <id name="adressnummer" column="ADRESSNUMMER">
-	    	<generator class="native" />
-	    </id>
-	    <property name="gueltigVon">
-			<column name="GUELTIGVON"/>
-		</property>
-		<property name="gueltigBis">
-			<column name="GUELTIGBIS"/>
-		</property>
-		<property name="hausnummer">
-		    <column name="HAUSNUMMER"/>
-		</property>
-		<property name="ort">
-		    <column name="ORT" />
-		</property>
-		<property name="plz">
-		    <column name="PLZ"/>
-		</property>
-		<property name="strasse">
-		    <column name="STRASSE"/>
-		</property>
-		</class>
-	
-	
-	-->
-	
-	
-	<!-- 
-	<class entity-name="domain.bedarfsplanung.core.Teil" table="teil" >
-	
-		<id name="teilenummer" column="teilenummer">
-	    	<generator class="native" />
-	    </id>
-	    <property name="planart" column="Planungsart" type="org.hibernate.type.EnumType"/>
-			
-	    <bag name="lagerplaetze" >
-        		<key column="teilenummer" />
-        		<one-to-many class="domain.lagerverwaltung.core.Lagerplatz"/>
-        </bag>
-       <bag name="reservierungen" >
-        		<key column name="teilenummer" />
-        		<one-to-many class="domain.lagerverwaltung.core.Reservierung"/>
-        </bag>
    
-	</class>
--->	
-<class name="domain.kundenauftragsverwaltung.core.Kundenauftrag" table="KUNDENAUFTRAG">
-		<id name="kundenauftragsnummer" column="KUNDENAUFTRAGSNUMMER">
-	    	<generator class="native" />
-	    </id>
-	    <property name="lieferzeitpunkt">
-			<column name="LIEFERZEITPUNKT"/>
-		</property>
-		<property name="kundennummer">
-			<column name="KUNDENNUMMER"/>
-		</property>
-		<bag name="positionen" cascade="all">
-        	<key column="KUNDENAUFTRAGSNUMMER"/>
-        	<one-to-many class="domain.kundenauftragsverwaltung.core.Kundenauftragsposition"/>
-    	</bag>
-		<property name="status" column="STATUS">
-			<type name="org.hibernate.type.EnumType">
-				<param name="enumClass">domain.shared.Auftragstatus</param>
-			</type>
-		</property>
-	</class>
-	
-	<class name="domain.kundenauftragsverwaltung.core.Kundenauftragsposition" table="KUNDENAUFTRAGSPOSITION">
-		<id name="positionsnummer" column="KUNDENAUFTRAGSPOSITIONSNUMMER">
-	    	<generator class="native" />
-	    </id>
-		<property name="teilenummer">
-			<column name="TEILENUMMER"/>
-		</property>
-		<property name="menge">
-			<column name="MENGE"/>
-		</property>
-	</class>
-	
-	<class name="domain.geschaeftspartnerverwaltung.core.Geschaeftspartner" table="GESCHAEFTSPARTNER">
+   <class name="domain.geschaeftspartnerverwaltung.core.Geschaeftspartner" table="GESCHAEFTSPARTNER">
 		<id name="partnernummer" column="PARTNERNUMMER">
 	    	<generator class="native" />
 	    </id>
@@ -262,6 +175,64 @@
 			<column name="GUELTIGVON"/>
 		</property>
 	</class>
+	
+	<class name="domain.kundenauftragsverwaltung.core.Kundenauftrag" table="KUNDENAUFTRAG">
+		<id name="kundenauftragsnummer" column="KUNDENAUFTRAGSNUMMER">
+	    	<generator class="native" />
+	    </id>
+	    <property name="lieferzeitpunkt">
+			<column name="LIEFERZEITPUNKT"/>
+		</property>
+		<property name="kundennummer">
+			<column name="KUNDENNUMMER"/>
+		</property>
+		<bag name="positionen" cascade="all">
+        	<key column="KUNDENAUFTRAGSNUMMER"/>
+        	<one-to-many class="domain.kundenauftragsverwaltung.core.Kundenauftragsposition"/>
+    	</bag>
+		<property name="status" column="STATUS">
+			<type name="org.hibernate.type.EnumType">
+				<param name="enumClass">domain.shared.Auftragstatus</param>
+			</type>
+		</property>
+	</class>
+	
+	<class name="domain.kundenauftragsverwaltung.core.Kundenauftragsposition" table="KUNDENAUFTRAGSPOSITION">
+		<id name="positionsnummer" column="KUNDENAUFTRAGSPOSITIONSNUMMER">
+	    	<generator class="native" />
+	    </id>
+		<property name="teilenummer">
+			<column name="TEILENUMMER"/>
+		</property>
+		<property name="menge">
+			<column name="MENGE"/>
+		</property>
+	</class>
+	
+	<!-- 
+	<class entity-name="domain.bedarfsplanung.core.Teil" table="teil" >
+	
+		<id name="teilenummer" column="teilenummer">
+	    	<generator class="native" />
+	    </id>
+	    <property name="planart" column="Planungsart" type="org.hibernate.type.EnumType"/>
+			
+       <bag name="reservierungen" >
+        		<key column name="teilenummer" />
+        		<one-to-many class="domain.lagerverwaltung.core.Reservierung"/>
+        </bag>
+   
+	</class>
+-->	
+	<!--
+	<class name="domain.lagerverwaltung.core.Lagerteil" table="Teil" >
+	
+		<id name="teilenummer" column ="teilenummer" >
+	    	<generator class="native" />
+	    </id>
+
+	</class>
+	-->
 
 	
 </hibernate-mapping>

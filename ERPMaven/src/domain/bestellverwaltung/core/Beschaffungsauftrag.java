@@ -8,7 +8,7 @@ public class Beschaffungsauftrag{
 
 	private int auftragsnummer;
 	private Auftragstatus status;
-	private int teilenummer;
+	private int teilenummer;  //not null
 	private int menge;
 	private LocalDateTime lieferzeitpunkt;
 	private LocalDateTime bestellzeitpunkt;

@@ -63,8 +63,8 @@ public class BetriebsmittelRepository implements IBetriebsmittelHibernate{
 					continue;
 				}
 			}
-			if (bm.getWerk() != null) {
-				if (!bl.getWerk().equals(bm.getWerk())  ) {
+			if (bm.getWerksnummer() != 0) {
+				if (!bl.getWerksnummer().equals(bm.getWerksnummer())  ) {
 					continue;
 				}
 			}

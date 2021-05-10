@@ -8,7 +8,6 @@ import com.google.inject.Inject;
 
 import domain.artificialClock.IClockService;
 import domain.artificialClock.IObserver;
-import domain.betriebsmittelverwaltung.core.BMWerk;
 import domain.betriebsmittelverwaltung.core.Betriebsmittel;
 import domain.betriebsmittelverwaltung.core.InvalidBetriebsmittelException;
 import domain.betriebsverwaltung.core.Werk;
@@ -170,9 +169,7 @@ public class Controller implements IObserver {
 		bm.setBezeichnung(Betriebsmittelbezeichnung.getText());
 		
 		// Ersetzen sobald Repository vorhanden
-		BMWerk bmWerk = new BMWerk();
-		bmWerk.setWerksnummer(1);
-		bm.setWerk(bmWerk); 			
+		bm.setWerksnummer(1); 			
 		
 		bm.setArt((Betriebsmittelart) betriebsmittelart.getValue());
 		bm.setGueltigVon(bmGueltigVon.getValue());
@@ -223,9 +220,7 @@ public class Controller implements IObserver {
 		bm.setBezeichnung(Betriebsmittelbezeichnung.getText());
 		
 		// Ersetzen sobald Repository vorhanden
-		BMWerk bmWerk = new BMWerk();		
-		bmWerk.setWerksnummer(1);
-		bm.setWerk(bmWerk);
+		bm.setWerksnummer(1); 	
 		
 		bm.setArt(betriebsmittelart.getValue());
 		bm.setGueltigVon(bmGueltigVon.getValue());
@@ -414,9 +409,7 @@ public class Controller implements IObserver {
 		if (werk.getValue() != null) {
 			
 			// Ersetzen sobald Repository vorhanden
-			BMWerk bmWerk = new BMWerk();
-			bmWerk.setWerksnummer(1);
-			neu.setWerk(bmWerk); 	
+			neu.setWerksnummer(1);	
 		}
 		
 
