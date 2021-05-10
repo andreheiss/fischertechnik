@@ -11,7 +11,7 @@ public class __Test {
 		WorkPieceHistory wph = new WorkPieceHistory();
 		
 		ActiveWorkPiece awp = new ActiveWorkPiece();
-		awp.setStockplace("Z9");
+		awp.setStockplace("Z8");
 		awp.setPostingdirection("hoch");
 		awp.setLocation("Location");
 		
