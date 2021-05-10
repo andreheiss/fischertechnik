@@ -64,6 +64,11 @@ public class AfterLogInController implements IObserver {
 		Main m = new Main();
 		m.changeScene("betriebsmittelverwaltung/betriebsmittel/View.fxml", 1280, 800);
 	}
+	
+	public void userArbeitsplan(ActionEvent event) throws IOException {
+		Main m = new Main();
+		m.changeScene("arbeitsplanverwaltung/OverviewView.fxml", 1280, 800);
+	}
 
 	@Override
 	public void aktualisieren() {

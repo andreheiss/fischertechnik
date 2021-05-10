@@ -35,6 +35,9 @@ public class PopUpController {
 		if (message.contains("Erfolgreich")) {
 			textArea.setStyle("-fx-text-inner-color: green;");
 		}
+		if (message.contains("Misserfolg") || message.contains("Fehler")) {
+			textArea.setStyle("-fx-text-inner-color: red;");
+		}
 
 	}
 
