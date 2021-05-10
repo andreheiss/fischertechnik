@@ -28,21 +28,20 @@ public class BetriebsmittelHibernate implements IBetriebsmittelHibernate {
 
 		try {
 			em.persist(bm);
+			em.getTransaction().commit();
+			return true;
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			em.getTransaction().rollback();
 			return false;
 		}
 
-		em.getTransaction().commit();
-
-		return true;
+		
 	}
 
 	@Override
 	public List<Betriebsmittel> getBetriebsmittel(Betriebsmittel bm) {
 		
-		em.getTransaction().begin();
 		
 		CriteriaBuilder builder = em.getCriteriaBuilder();
 
@@ -65,7 +64,7 @@ public class BetriebsmittelHibernate implements IBetriebsmittelHibernate {
 			}
 			if (bm.getBezeichnung() != null) {
 
-				criteria.where(builder.equal(root.get("bezeichnung"), bm.getBezeichnung()));
+				criteria.where(builder.like( builder.upper(root.get("bezeichnung")), "%" + bm.getBezeichnung().toUpperCase()+"%") );
 			}
 			if (bm.getArt() != null) {
 
@@ -77,9 +76,11 @@ public class BetriebsmittelHibernate implements IBetriebsmittelHibernate {
 				criteria.where(builder.equal(root.get("werksnummer"), bm.getWerk()));
 			
 		}
-		em.getTransaction().commit();
+		
 
 		return em.createQuery(criteria).getResultList();
+		
+		
 	}
 
 	@Override
@@ -88,13 +89,14 @@ public class BetriebsmittelHibernate implements IBetriebsmittelHibernate {
 
 		try {
 			em.merge(bm);
+			em.getTransaction().commit();
+			return true;
 		} catch (Exception e) {
+			em.getTransaction().rollback();
 			return false;
 		}
 
-		em.getTransaction().commit();
-
-		return true;
+		
 	}
 
 	@Override
@@ -105,13 +107,14 @@ public class BetriebsmittelHibernate implements IBetriebsmittelHibernate {
 			em.remove(bm);
 			em.flush();
 			em.clear();
+			em.getTransaction().commit();
+			return true;
 		} catch (Exception e) {
+			em.getTransaction().rollback();
 			return false;
 		}
 
-		em.getTransaction().commit();
-
-		return true;
+		
 	}
 
 }

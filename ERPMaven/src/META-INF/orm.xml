@@ -75,10 +75,15 @@
 		<property name="posY">
 			<column name="posY"/>
 		</property>
+		<!--
 		  <many-to-one name="teil" column="teilenummer" class="domain.lagerverwaltung.core.Lagerteil"/>
-	
+	    -->
+	    <property name="teilenummer">
+			<column name="teilenummer"/>
+		</property>
 
 	</class>
+	<!--
 	<class name="domain.lagerverwaltung.core.Lagerteil" table="Teil" >
 	
 		<id name="teilenummer" column ="teilenummer" >
@@ -86,7 +91,7 @@
 	    </id>
 
 	</class>
-	
+	-->
 	<class name="domain.betriebsmittelverwaltung.core.Betriebsmittel" table="BETRIEBSMITTEL">
 		<id name="betriebsmittelnummer" column="BETRIEBSMITTELNUMMER">
 	    	<generator class="native" />

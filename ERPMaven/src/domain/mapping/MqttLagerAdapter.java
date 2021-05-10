@@ -30,9 +30,10 @@ public class MqttLagerAdapter implements ILagerNachricht {
 		
 		Teil t = teilUmwandeln(wp);
 		Lagerplatz l = lagerplatzUmwandeln(lp);
-		Lagerteil lt = new Lagerteil();
-		lt.setTeilenummer(t.getTeilenummer());
-		l.setTeil(lt);
+	//	Lagerteil lt = new Lagerteil();
+	//	lt.setTeilenummer(t.getTeilenummer());
+	//	l.setTeil(lt);
+		l.setTeilenummer(t.getTeilenummer());
 		ils.einlagern(l);
 		
 	}

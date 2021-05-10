@@ -22,25 +22,20 @@ public class LagerHibernate implements ILagerHibernate {
 		em = etmU.getEntityManager();
 	}
 
-	
-
-	
-
-
 	@Override
 	public boolean createLagerplatz(Lagerplatz lp) {
 		em.getTransaction().begin();
 
 		try {
 			em.persist(lp);
+			em.getTransaction().commit();
+			return true;
 		} catch (Exception e) {
+			em.getTransaction().rollback();
 			System.out.println(e.getMessage());
 			return false;
 		}
 
-		em.getTransaction().commit();
-
-		return true;
 	}
 
 	@Override
@@ -50,13 +45,13 @@ public class LagerHibernate implements ILagerHibernate {
 		try {
 			em.merge(lp);
 			em.flush();
+			em.getTransaction().commit();
+			return true;
 		} catch (Exception e) {
+			em.getTransaction().rollback();
 			return false;
 		}
 
-		em.getTransaction().commit();
-
-		return true;
 	}
 
 	@Override
@@ -67,18 +62,17 @@ public class LagerHibernate implements ILagerHibernate {
 			em.remove(lp);
 			em.flush();
 			em.clear();
+			em.getTransaction().commit();
+			return true;
 		} catch (Exception e) {
+			em.getTransaction().rollback();
 			return false;
 		}
 
-		em.getTransaction().commit();
-
-		return true;
 	}
 
 	@Override
 	public List<Lagerplatz> getLagerplatz(Lagerplatz lp) {
-		em.getTransaction().begin();
 
 		CriteriaBuilder builder = em.getCriteriaBuilder();
 
@@ -99,15 +93,32 @@ public class LagerHibernate implements ILagerHibernate {
 
 				criteria.where(builder.equal(root.get("posY"), lp.getPosX()));
 			}
-			if (lp.getTeil() != null) {
+//			if (lp.getTeil() != null) {
+//
+//				criteria.where(builder.equal(root.get("teilenummer"), lp.getTeil()));
+//			}
+			if (lp.getTeilenummer() != null) {
 
-				criteria.where(builder.equal(root.get("teilenummer"), lp.getTeil()));
+				criteria.where(builder.equal(root.get("teilenummer"), lp.getTeilenummer()));
 			}
 		}
 
-		em.getTransaction().commit();
-
 		return em.createQuery(criteria).getResultList();
+
+	}
+
+	@Override
+	public int getLagerbestand(int teilenummer) {
+
+		CriteriaBuilder builder = em.getCriteriaBuilder();
+
+		CriteriaQuery<Long> criteria = builder.createQuery(Long.class);
+		Root<Lagerplatz> root = criteria.from(Lagerplatz.class);
+		criteria.select(builder.count(criteria.from(Lagerplatz.class)));
+		criteria.where(builder.equal(root.get("teilenummer"), teilenummer));
+
+		return em.createQuery(criteria).getSingleResult().intValue();
+
 	}
 
 }

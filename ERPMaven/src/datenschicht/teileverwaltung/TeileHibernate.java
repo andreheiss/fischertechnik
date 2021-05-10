@@ -31,20 +31,18 @@ public class TeileHibernate implements ITeilHibernate {
 
 		try {
 			em.persist(t);
+			em.getTransaction().commit();
+			return true;
 		} catch (Exception e) {
+			em.getTransaction().rollback();
 			System.out.println(e.getMessage());
 			return false;
 		}
 
-		em.getTransaction().commit();
-
-		return true;
 	}
 
 	@Override
 	public List<Teil> getTeil(Teil t) {
-
-		em.getTransaction().begin();
 
 		CriteriaBuilder builder = em.getCriteriaBuilder();
 		CriteriaQuery<Teil> criteria = builder.createQuery(Teil.class);
@@ -74,8 +72,9 @@ public class TeileHibernate implements ITeilHibernate {
 			}
 			if (t.getBezeichnung() != null) {
 
-				criteria.where(builder.like( builder.upper(root.get("bezeichnung")), "%" + t.getBezeichnung().toUpperCase()+"%") );
-			
+				criteria.where(builder.like(builder.upper(root.get("bezeichnung")),
+						"%" + t.getBezeichnung().toUpperCase() + "%"));
+
 			}
 			if (t.getMengeneinheit() != null) {
 
@@ -95,9 +94,8 @@ public class TeileHibernate implements ITeilHibernate {
 			}
 		}
 
-		em.getTransaction().commit();
-
 		return em.createQuery(criteria).getResultList();
+
 	}
 
 	@Override
@@ -108,13 +106,13 @@ public class TeileHibernate implements ITeilHibernate {
 		try {
 			em.merge(t);
 			em.flush();
+			em.getTransaction().commit();
+			return true;
 		} catch (Exception e) {
+			em.getTransaction().rollback();
 			return false;
 		}
 
-		em.getTransaction().commit();
-
-		return true;
 	}
 
 	@Override
@@ -126,12 +124,12 @@ public class TeileHibernate implements ITeilHibernate {
 			em.remove(t);
 			em.flush();
 			em.clear();
+			em.getTransaction().commit();
+			return true;
 		} catch (Exception e) {
+			em.getTransaction().rollback();
 			return false;
 		}
 
-		em.getTransaction().commit();
-
-		return true;
 	}
 }

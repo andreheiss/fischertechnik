@@ -18,6 +18,8 @@ public interface ILagerService {
 	public void einlagern(Lagerplatz lp); 
 
 	public void auslagern(Lagerplatz lp);
+	
+	public int getLagerbestand(int teilenummer);
 
 	
 }

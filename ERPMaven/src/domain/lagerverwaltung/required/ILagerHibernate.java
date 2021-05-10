@@ -14,4 +14,5 @@ public interface ILagerHibernate {
 
 	public List<Lagerplatz> getLagerplatz(Lagerplatz lp);
 	
+	public int getLagerbestand(int teilenummer);
 }

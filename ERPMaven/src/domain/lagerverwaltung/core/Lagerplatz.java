@@ -5,8 +5,8 @@ public class Lagerplatz {
 	private int lagerplatznummer;
 	private int posX; //start with 1
 	private int posY; //start with 1
-	private Lagerteil teil;		
-	
+//	private Lagerteil teil;		
+	private Integer teilenummer;
 	
 	public int getLagerplatznummer() {
 		return lagerplatznummer;
@@ -26,12 +26,19 @@ public class Lagerplatz {
 	public void setPosY(int posY) {
 		this.posY = posY;
 	}
-	public Lagerteil getTeil() {
-		return teil;
+//	public Lagerteil getTeil() {
+//		return teil;
+//	}
+//	public void setTeil(Lagerteil teil) {
+//		this.teil = teil;
+//	}
+	public Integer getTeilenummer() {
+		return teilenummer;
 	}
-	public void setTeil(Lagerteil teil) {
-		this.teil = teil;
+	public void setTeilenummer(Integer teilenummer) {
+		this.teilenummer = teilenummer;
 	}
+	
 	
 	
 	

@@ -47,9 +47,12 @@ public class LagerServiceImpl implements ILagerService{
 	@Override
 	public void auslagern(Lagerplatz lp) {
 		//settern teilenummer entfernen schlecht wegen Hibernate
-		lp.setTeil(null);
+		lp.setTeilenummer(null);
 		hib.changeLagerplatz(lp);
 		
+	}
+	public int getLagerbestand(int teilenummer) {
+		return hib.getLagerbestand(teilenummer);
 	}
 	
 
