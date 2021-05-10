@@ -15,7 +15,7 @@ public interface IArbeitsgangService {
 		public List<Arbeitsgang> getArbeitsgang(Arbeitsgang ag);
 		
 		//for changing and delimiting
-		public boolean changeArbeitsgang(Arbeitsgang ag);
+		public boolean changeArbeitsgang(Arbeitsgang ag)throws InvalidArbeitsgangException;
 		
 		//for deleting
 		public boolean deleteArbeitsgang(Arbeitsgang ag);

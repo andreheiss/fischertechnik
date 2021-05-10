@@ -34,7 +34,8 @@ public class ArbeitsplanServiceImpl implements IArbeitsplanService{
 	}
 
 	@Override
-	public boolean changeArbeitsplan(Arbeitsplan ap) {
+	public boolean changeArbeitsplan(Arbeitsplan ap) throws InvalidArbeitsplanException {
+		ap.validateArbeitsplan();
 		return arbeitsplanHibernate.changeArbeitsplan(ap);
 	}
 

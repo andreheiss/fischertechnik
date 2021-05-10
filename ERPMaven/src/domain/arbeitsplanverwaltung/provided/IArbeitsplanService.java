@@ -16,7 +16,7 @@ public interface IArbeitsplanService {
 		public boolean createArbeitsplan(Arbeitsplan ap) throws InvalidArbeitsplanException;
 		
 		//for changing
-		public boolean changeArbeitsplan(Arbeitsplan ap);
+		public boolean changeArbeitsplan(Arbeitsplan ap) throws InvalidArbeitsplanException;
 		
 		//for deleting
 		public boolean deleteArbeitsplan(Arbeitsplan ap);

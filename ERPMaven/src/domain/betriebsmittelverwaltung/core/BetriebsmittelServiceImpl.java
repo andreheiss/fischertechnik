@@ -29,7 +29,8 @@ public class BetriebsmittelServiceImpl implements IBetriebsmittelService {
 	}
 
 	@Override
-	public boolean changeBetriebsmittel(Betriebsmittel bm) {
+	public boolean changeBetriebsmittel(Betriebsmittel bm) throws InvalidBetriebsmittelException {
+		bm.validateBetriebsmittel();
 		return betriebsmittelHibernate.changeBetriebsmittel(bm);
 	}
 

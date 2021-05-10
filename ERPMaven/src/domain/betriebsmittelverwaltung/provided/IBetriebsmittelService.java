@@ -14,7 +14,7 @@ public interface IBetriebsmittelService {
 	public List<Betriebsmittel> getBetriebsmittel(Betriebsmittel bm);
 	
 	//for changing and delimiting
-	public boolean changeBetriebsmittel(Betriebsmittel bm);
+	public boolean changeBetriebsmittel(Betriebsmittel bm) throws InvalidBetriebsmittelException;
 	
 	//for deleting
 	public boolean deleteBetriebsmittel(Betriebsmittel bm);

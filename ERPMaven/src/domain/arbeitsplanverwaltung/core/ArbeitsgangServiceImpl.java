@@ -29,8 +29,9 @@ public class ArbeitsgangServiceImpl implements IArbeitsgangService {
 	}
 
 	@Override
-	public boolean changeArbeitsgang(Arbeitsgang ag) {
-	return arbeitsgangHibernate.changeArbeitsgang(ag);
+	public boolean changeArbeitsgang(Arbeitsgang ag) throws InvalidArbeitsgangException{
+		ag.validateArbeitsgang();
+		return arbeitsgangHibernate.changeArbeitsgang(ag);
 	}
 
 	@Override
