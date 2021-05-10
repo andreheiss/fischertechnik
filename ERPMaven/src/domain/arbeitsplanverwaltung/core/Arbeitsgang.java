@@ -4,16 +4,18 @@ import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
 
+import domain.teileverwaltung.core.InvalidTeilException;
+
 public class Arbeitsgang {
 
 	private int arbeitsgangnummer;
 	private String bezeichnung;
-	private int bearbeitungszeit;		//in Sekunden
-	private int ruestzeit;				//in Sekunden
+	private int bearbeitungszeit; // in Sekunden
+	private int ruestzeit; // in Sekunden
 	private LocalDate gueltigVon;
 	private LocalDate gueltigBis;
 	private List<Betriebsmittel> betriebsmittel;
-	
+
 	public Arbeitsgang() {
 		betriebsmittel = new LinkedList<>();
 	}
@@ -72,6 +74,29 @@ public class Arbeitsgang {
 
 	public void setBetriebsmittel(List<Betriebsmittel> betriebsmittel) {
 		this.betriebsmittel = betriebsmittel;
+	}
+
+	void validateArbeitsgang() throws InvalidArbeitsgangException{
+		
+		if(this.getBezeichnung() == null) {
+			throw new InvalidArbeitsgangException("Bezeichnung fehlt!");
+		}
+			
+		if(this.getBearbeitungszeit() == 0) {
+			throw new InvalidArbeitsgangException("Bearbeitungszeit fehlt!");
+		}
+		
+		if(this.getGueltigVon() == null) {
+			throw new InvalidArbeitsgangException("GueltigVon fehlt!");
+		}
+		
+		if(this.getGueltigBis() == null) {
+			throw new InvalidArbeitsgangException("GueltigBis fehlt!");
+		}
+		if(getGueltigBis().compareTo(getGueltigVon())< 0) {
+			throw new InvalidArbeitsgangException("ungueltiger Zeitraum!");
+			
+		}
 	}
 	
 }

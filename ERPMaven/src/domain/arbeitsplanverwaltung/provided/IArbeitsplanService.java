@@ -3,6 +3,7 @@ package domain.arbeitsplanverwaltung.provided;
 import java.util.List;
 
 import domain.arbeitsplanverwaltung.core.Arbeitsplan;
+import domain.arbeitsplanverwaltung.core.InvalidArbeitsplanException;
 
 public interface IArbeitsplanService {
 
@@ -12,7 +13,7 @@ public interface IArbeitsplanService {
 		public List<Arbeitsplan> getArbeitsplanForTeil(int t);
 		
 		//for storing
-		public boolean createArbeitsplan(Arbeitsplan ap);
+		public boolean createArbeitsplan(Arbeitsplan ap) throws InvalidArbeitsplanException;
 		
 		//for changing
 		public boolean changeArbeitsplan(Arbeitsplan ap);

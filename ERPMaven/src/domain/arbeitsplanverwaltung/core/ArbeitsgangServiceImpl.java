@@ -18,7 +18,8 @@ public class ArbeitsgangServiceImpl implements IArbeitsgangService {
 	}
 
 	@Override
-	public boolean createArbeitsgang(Arbeitsgang ag) {
+	public boolean createArbeitsgang(Arbeitsgang ag) throws InvalidArbeitsgangException {
+		ag.validateArbeitsgang();
 		return arbeitsgangHibernate.createArbeitsgang(ag);
 	}
 

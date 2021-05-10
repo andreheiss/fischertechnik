@@ -28,7 +28,8 @@ public class ArbeitsplanServiceImpl implements IArbeitsplanService{
 	}
 
 	@Override
-	public boolean createArbeitsplan(Arbeitsplan ap) {
+	public boolean createArbeitsplan(Arbeitsplan ap) throws InvalidArbeitsplanException{
+		ap.validateArbeitsplan();
 		return arbeitsplanHibernate.createArbeitsplan(ap);
 	}
 

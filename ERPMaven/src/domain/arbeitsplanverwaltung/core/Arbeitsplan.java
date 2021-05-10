@@ -75,6 +75,32 @@ public class Arbeitsplan {
 		this.werke = werke;
 	}
 	
+	void validateArbeitsplan() throws InvalidArbeitsplanException{
+		
+		if(this.getTeil() == null) {
+			throw new InvalidArbeitsplanException("Teil fehlt!");
+		}
+		
+		
+		if(this.getBezeichnung() == null) {
+			throw new InvalidArbeitsplanException("Bezeichnung fehlt!");
+		}
+			
+		if(this.getGueltigVon() == null) {
+			throw new InvalidArbeitsplanException("GueltigVon fehlt!");
+		}
+		
+		if(this.getGueltigBis() == null) {
+			throw new InvalidArbeitsplanException("GueltigBis fehlt!");
+		}
+		if(getGueltigBis().compareTo(getGueltigVon())< 0) {
+			throw new InvalidArbeitsplanException("ungueltiger Zeitraum!");
+			
+		}
+		if(this.getWerke() == null || this.getWerke().size() == 0) {
+			throw new InvalidArbeitsplanException("Werk fehlt!");
+		}
+	}
 	
 	
 }
