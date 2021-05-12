@@ -7,7 +7,6 @@ import com.google.inject.Inject;
 
 import domain.arbeitsplanverwaltung.core.Arbeitsgang;
 import domain.arbeitsplanverwaltung.core.Arbeitsplan;
-import domain.arbeitsplanverwaltung.core.Betriebsmittel;
 import domain.arbeitsplanverwaltung.provided.IArbeitsplanService;
 import domain.produktionsplanung.core.Fertigungsarbeitsgang;
 import domain.produktionsplanung.core.Fertigungsarbeitsplan;
@@ -35,7 +34,7 @@ public class ProduktionArbeitsplanAdapter implements IGetArbeitsplan{
 		
 		//fap.setArbeitsplannummer(ap.getArbeitsplannummer()); --> eigene Nummer sinnvoll! durch DB beim speichern erstellen lassen
 		Fertigungsteil ft = new Fertigungsteil();
-		ft.setTeilenummer(ap.getTeil().getTeilenummer());
+		ft.setTeilenummer(ap.getFertigungsteilenummer());
 		fap.setTeil(ft);
 		List<Fertigungsarbeitsgang> agl = new LinkedList<>();
 		Fertigungsarbeitsgang fag;

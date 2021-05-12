@@ -7,6 +7,7 @@ public class Bruttobedarf {
 	private int bruttobedarfsnummer;
 	private Teil teil;
 	private int menge;
+	private Reservierung reservierung;
 	private Nettobedarf nettobedarf;
 	
 	public int getBruttobedarfsnummer() {
@@ -28,6 +29,13 @@ public class Bruttobedarf {
 	}
 	public void setMenge(int menge) {
 		this.menge = menge;
+	}
+	
+	public Reservierung getReservierung() {
+		return reservierung;
+	}
+	public void setReservierung(Reservierung reservierung) {
+		this.reservierung = reservierung;
 	}
 	
 	public Nettobedarf getNettobedarf() {

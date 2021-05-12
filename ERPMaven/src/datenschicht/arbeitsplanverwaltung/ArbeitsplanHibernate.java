@@ -3,7 +3,6 @@ package datenschicht.arbeitsplanverwaltung;
 import java.util.List;
 
 import domain.arbeitsplanverwaltung.core.Arbeitsplan;
-import domain.arbeitsplanverwaltung.core.Teil;
 import domain.arbeitsplanverwaltung.required.IArbeitsplanHibernate;
 
 public class ArbeitsplanHibernate implements IArbeitsplanHibernate {

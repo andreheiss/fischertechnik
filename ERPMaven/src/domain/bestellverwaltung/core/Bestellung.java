@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 import domain.shared.Auftragstatus;
 
-public class Beschaffungsauftrag{
+public class Bestellung{
 
 	private int auftragsnummer;
 	private Auftragstatus status;

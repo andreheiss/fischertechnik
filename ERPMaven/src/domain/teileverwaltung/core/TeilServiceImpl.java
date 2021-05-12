@@ -7,11 +7,10 @@ import com.google.inject.Inject;
 import domain.teileverwaltung.providedservices.ITeilService;
 import domain.teileverwaltung.requiredservices.ITeilHibernate;
 
-public class TeilServiceImpl implements ITeilService{
-	
+public class TeilServiceImpl implements ITeilService {
 
 	private ITeilHibernate teilHibernate;
-	
+
 	@Inject
 	public TeilServiceImpl(ITeilHibernate repo) {
 		teilHibernate = repo;
@@ -19,6 +18,7 @@ public class TeilServiceImpl implements ITeilService{
 
 	@Override
 	public boolean createTeil(Teil t) throws InvalidTeilException {
+		this.checkIfChild(t);
 		t.validateTeil();
 		return teilHibernate.createTeil(t);
 	}
@@ -29,7 +29,8 @@ public class TeilServiceImpl implements ITeilService{
 	}
 
 	@Override
-	public boolean changeTeil(Teil t) throws InvalidTeilException{
+	public boolean changeTeil(Teil t) throws InvalidTeilException {
+		this.checkIfChild(t);
 		t.validateTeil();
 		return teilHibernate.changeTeil(t);
 	}
@@ -38,10 +39,15 @@ public class TeilServiceImpl implements ITeilService{
 	public boolean deleteTeil(Teil t) {
 		return teilHibernate.deleteTeil(t);
 	}
-
+	
+	//verhindern, dass nur Teil angelegt wird, statt Kindklassen!
+	private void checkIfChild(Teil t) throws InvalidTeilException {
+		if(! (t instanceof Eigenfertigungsteil || t instanceof Fremdbezugsteil)) {
+			throw new InvalidTeilException("Teil muss Fremd- oder Eigenfertigungsteil sein!");
+		}
 	
 
-
+	}
 	
 	
 }

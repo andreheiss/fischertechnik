@@ -2,14 +2,13 @@ package domain.produktionsplanung.core;
 
 import java.util.List;
 
-import domain.arbeitsplanverwaltung.core.Betriebsmittel;
 
 public class Fertigungsarbeitsgang {
 
 	private int arbeitsgangnummer;
 	private int bearbeitungszeit;		//in Sekunden
 	private int ruestzeit;				//in Sekunden
-	private List<Betriebsmittel> betriebsmittel;
+	private List<Integer> betriebsmittelnummern;
 	
 	public int getArbeitsgangnummer() {
 		return arbeitsgangnummer;
@@ -29,11 +28,11 @@ public class Fertigungsarbeitsgang {
 	public void setRuestzeit(int ruestzeit) {
 		this.ruestzeit = ruestzeit;
 	}
-	public List<Betriebsmittel> getBetriebsmittel() {
-		return betriebsmittel;
+	public List<Integer> getBetriebsmittelnummern() {
+		return betriebsmittelnummern;
 	}
-	public void setBetriebsmittel(List<Betriebsmittel> betriebsmittel) {
-		this.betriebsmittel = betriebsmittel;
+	public void setBetriebsmittelnummern(List<Integer> betriebsmittelnummern) {
+		this.betriebsmittelnummern = betriebsmittelnummern;
 	}
 	
 	

@@ -7,16 +7,16 @@ import java.util.List;
 public class Arbeitsplan {
 
 	private int arbeitsplannummer;
-	private Eigenfertigungsteil teil;
+	private Integer fertigungsteilenummer;
 	private String bezeichnung;
 	private LocalDate gueltigVon;
 	private LocalDate gueltigBis;
 	private List<Arbeitsgang> arbeitsgaenge;
-	private List<Werk> werke;
+	private List<Integer> werksnummern;
 	
 	public Arbeitsplan() {
 		arbeitsgaenge = new LinkedList<>();
-		werke = new LinkedList<>();
+		werksnummern = new LinkedList<>();
 	}
 
 	public int getArbeitsplannummer() {
@@ -27,13 +27,6 @@ public class Arbeitsplan {
 		this.arbeitsplannummer = arbeitsplannummer;
 	}
 
-	public Eigenfertigungsteil getTeil() {
-		return teil;
-	}
-
-	public void setTeil(Eigenfertigungsteil teil) {
-		this.teil = teil;
-	}
 
 	public String getBezeichnung() {
 		return bezeichnung;
@@ -67,20 +60,27 @@ public class Arbeitsplan {
 		this.arbeitsgaenge = arbeitsgaenge;
 	}
 
-	public List<Werk> getWerke() {
-		return werke;
+	public Integer getFertigungsteilenummer() {
+		return fertigungsteilenummer;
 	}
 
-	public void setWerke(List<Werk> werke) {
-		this.werke = werke;
+	public void setFertigungsteilenummer(Integer fertigungsteilenummer) {
+		this.fertigungsteilenummer = fertigungsteilenummer;
 	}
-	
+
+	public List<Integer> getWerksnummern() {
+		return werksnummern;
+	}
+
+	public void setWerksnummern(List<Integer> werksnummern) {
+		this.werksnummern = werksnummern;
+	}
+
 	void validateArbeitsplan() throws InvalidArbeitsplanException{
 		
-		if(this.getTeil() == null) {
+		if(this.getFertigungsteilenummer() == null) {
 			throw new InvalidArbeitsplanException("Teil fehlt!");
 		}
-		
 		
 		if(this.getBezeichnung() == null) {
 			throw new InvalidArbeitsplanException("Bezeichnung fehlt!");
@@ -97,7 +97,7 @@ public class Arbeitsplan {
 			throw new InvalidArbeitsplanException("ungueltiger Zeitraum!");
 			
 		}
-		if(this.getWerke() == null || this.getWerke().size() == 0) {
+		if(this.getWerksnummern() == null || this.getWerksnummern().size() == 0) {
 			throw new InvalidArbeitsplanException("Werk fehlt!");
 		}
 	}

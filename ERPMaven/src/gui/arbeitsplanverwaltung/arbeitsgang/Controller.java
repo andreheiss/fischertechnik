@@ -9,11 +9,12 @@ import java.util.List;
 import com.google.inject.Inject;
 
 import domain.arbeitsplanverwaltung.core.Arbeitsgang;
-import domain.arbeitsplanverwaltung.core.Betriebsmittel;
 import domain.arbeitsplanverwaltung.core.InvalidArbeitsgangException;
 import domain.arbeitsplanverwaltung.provided.IArbeitsgangService;
 import domain.artificialClock.IClockService;
 import domain.artificialClock.IObserver;
+import domain.betriebsmittelverwaltung.core.Betriebsmittel;
+import domain.betriebsmittelverwaltung.provided.IBetriebsmittelService;
 import gui.Main;
 import gui.general.popUps.PopUpManager;
 import javafx.event.ActionEvent;
@@ -33,6 +34,7 @@ import javafx.stage.Stage;
 public class Controller implements IObserver {
 
 	private IArbeitsgangService arbeitsgangService;
+	private IBetriebsmittelService btrmService;
 
 	@FXML
 	private Parent root;
@@ -95,7 +97,8 @@ public class Controller implements IObserver {
 
 
 	@Inject
-	public Controller(IArbeitsgangService ts, IClockService uhr) {
+	public Controller(IArbeitsgangService ts, IClockService uhr, IBetriebsmittelService bmS) {
+		btrmService = bmS;
 		arbeitsgangService = ts;
 		uhrzeit = uhr;
 		uhrzeit.anmelden(this);

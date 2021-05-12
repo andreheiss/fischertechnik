@@ -1,5 +1,6 @@
 package main;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
@@ -11,10 +12,15 @@ import datenschicht.EntityManagerUtil;
 //import domain.bedarfsplanung.core.*;
 import domain.bedarfsplanung.provided.IBedarfsermittlungService;
 import domain.lagerverwaltung.core.LagerServiceImpl;
+import domain.teileverwaltung.core.InvalidTeilException;
 import domain.teileverwaltung.core.Teil;
 import domain.teileverwaltung.core.TeilServiceImpl;
 import main.modules.*;
 import domain.lagerverwaltung.core.Lagerplatz;
+import domain.shared.Farbe;
+import domain.shared.Mengeneinheit;
+import domain.shared.Planungsart;
+import domain.shared.Teileart;
 
 public class TestBedarfsplanung {
 
@@ -58,28 +64,47 @@ public class TestBedarfsplanung {
 
 		// Test Lager <START>
 
-				LagerServiceImpl ls = injector.getInstance(LagerServiceImpl.class);
-				TeilServiceImpl ts = injector.getInstance(TeilServiceImpl.class);
-				//lagerplatzsuche vorbereiten
-				Lagerplatz lp = new Lagerplatz();
-				lp.setPosX(1);
-				lp.setPosY(1);
-				//lagerplatz holen
-				lp = ls.getLagerplatz(lp).get(0);
-				
-				//teilsuche vorbereiten
-				Teil t = new Teil();
-				t.setBezeichnung("test2");
-				//teil holen
-				t = ts.getTeil(t).get(0);
-				
-				lp.setTeilenummer(t.getTeilenummer());
-				ls.einlagern(lp);
-			System.out.println(ls.getLagerbestand(lp.getTeilenummer()));
-			//	ls.auslagern(lp);
+//				LagerServiceImpl ls = injector.getInstance(LagerServiceImpl.class);
+//				TeilServiceImpl ts = injector.getInstance(TeilServiceImpl.class);
+//				//lagerplatzsuche vorbereiten
+//				Lagerplatz lp = new Lagerplatz();
+//				lp.setPosX(1);
+//				lp.setPosY(1);
+//				//lagerplatz holen
+//				lp = ls.getLagerplatz(lp).get(0);
+//				
+//				//teilsuche vorbereiten
+//				Teil t = new Teil();
+//				t.setBezeichnung("test2");
+//				//teil holen
+//				t = ts.getTeil(t).get(0);
+//				
+//				lp.setTeilenummer(t.getTeilenummer());
+//				ls.einlagern(lp);
+//			System.out.println(ls.getLagerbestand(lp.getTeilenummer()));
+//			//	ls.auslagern(lp);
 				
 		// Test Lager <ENDE>
 
+		//TEST Teil
+		
+//		TeilServiceImpl ts = injector.getInstance(TeilServiceImpl.class);
+//		Teil t = new Teil();
+//		t.setBezeichnung("Rot");
+//		t.setFarbe(Farbe.Rot);
+//		t.setMengeneinheit(Mengeneinheit.Stueck);
+//		t.setPlanart(Planungsart.Verbrauchsgesteuert);
+//		t.setTeileart(Teileart.Betriebsstoff);
+//		t.setGueltigVon(LocalDate.now());
+//		t.setGueltigBis(LocalDate.of(2021, 10, 20));
+//		
+//		try {
+//		ts.createTeil(t);
+//		}catch(InvalidTeilException e) {
+//			System.out.println(e.getMessage());
+//		}
+		//Ende Test Teil
+		
 	}
 
 }

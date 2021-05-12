@@ -11,13 +11,13 @@ public class Arbeitsgang {
 	private int arbeitsgangnummer;
 	private String bezeichnung;
 	private int bearbeitungszeit; // in Sekunden
-	private int ruestzeit; // in Sekunden
+	private int ruestzeit; 		  // in Sekunden
 	private LocalDate gueltigVon;
 	private LocalDate gueltigBis;
-	private List<Betriebsmittel> betriebsmittel;
+	private List<Integer> betriebsmittelnummern;
 
 	public Arbeitsgang() {
-		betriebsmittel = new LinkedList<>();
+		betriebsmittelnummern = new LinkedList<>();
 	}
 
 	public int getArbeitsgangnummer() {
@@ -68,12 +68,12 @@ public class Arbeitsgang {
 		this.gueltigBis = gueltigBis;
 	}
 
-	public List<Betriebsmittel> getBetriebsmittel() {
-		return betriebsmittel;
+	public List<Integer> getBetriebsmittelnummern() {
+		return betriebsmittelnummern;
 	}
 
-	public void setBetriebsmittel(List<Betriebsmittel> betriebsmittel) {
-		this.betriebsmittel = betriebsmittel;
+	public void setBetriebsmittelnummern(List<Integer> betriebsmittelnummern) {
+		this.betriebsmittelnummern = betriebsmittelnummern;
 	}
 
 	void validateArbeitsgang() throws InvalidArbeitsgangException{
